@@ -10,7 +10,7 @@ export class App extends Component {
       <Newsnavbar />
       <div className="container">
         <Routes>
-            <Route exact path="/" element={<News key="normal" pageSize={6} category="general"/>} />
+            <Route exact path="/news-api" element={<News key="normal" pageSize={6} category="general"/>} />
             <Route exact path="/business" element={<News key="business" pageSize={6} category="business"/>}/>
             <Route exact path="/entertainment" element={<News key="entertainment" pageSize={6} category="entertainment"/>}/>
             <Route exact path="/general" element={<News key="general" pageSize={6} category="general"/>}/>
