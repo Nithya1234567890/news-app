@@ -8,27 +8,30 @@ const News =(props)=>{
   const [loading,setLoading]=useState(true);
   const [page,setPage]=useState(1);
   const [totalResults,setTotalResults]=useState(0);
-    const update=async()=>{
-      props.setProgress(10);
-      let url=`https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=51a2d40db76e4f72b9096976ef8cf041&page=${page}&pageSize=${props.pageSize}`;
-      let data= await fetch(url);
-      props.setProgress(70)
-      let parsedData= await data.json();
-      console.log(parsedData);
-      setLoading(false);
-      setArticles(parsedData.articles);
-      setTotalResults(parsedData.totalResults);
-      props.setProgress(100);
-    }
+  const update=async()=>{
+    props.setProgress(10);
+    let url=`https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=98c9fa9c82634c2f848992d9898e3774&page=${page}&pageSize=${props.pageSize}`;
+    let data= await fetch(url);
+    props.setProgress(30);
+    let parsedData= await data.json();
+    setLoading(false);
+    props.setProgress(70);
+    console.log(parsedData);
+    setArticles(parsedData.articles);
+    setTotalResults(parsedData.totalResults);
+    props.setProgress(100);
+  };
   useEffect(()=>{
+    document.title=`Daily News - ${captilaize(props.category)}`;
     update();
-    document.title=`Daily News - ${captilaize(props.category)}`
+    //eslint-disable-next-line
   },[])
    const fetchMoreData=async()=>{
-      let url=`https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=51a2d40db76e4f72b9096976ef8cf041&page=${page+1}&pageSize=${props.pageSize}`;
+      let url=`https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=98c9fa9c82634c2f848992d9898e3774&page=${page+1}&pageSize=${props.pageSize}`;
       let data= await fetch(url);
       let parsedData= await data.json();
-      console.log(parsedData);
+    setLoading(false);
+    console.log(parsedData);
       setArticles(articles.concat(parsedData.articles));
       setTotalResults(parsedData.totalResults);
       setPage(page+1);
@@ -65,7 +68,7 @@ const News =(props)=>{
         <div className="row">
             {articles.map((elememt)=>{
                 return <div className="col-md-4" key={elememt.url}>
-                <Newsitem title={elememt.title??""} description={elememt.description??""} imgurl={elememt.urlToImage??"https://i.ytimg.com/vi/bSWs9pS3VXY/maxresdefault.jpg"} url={elememt.url} author={elememt.author??"Unknown"} source={elememt.source.name} date={elememt.publishedAt}/>
+                <Newsitem title={elememt.title??""} description={elememt.description??""} imgurl={elememt.urlToImage??"https://cdn.pixabay.com/photo/2013/02/19/02/24/football-83222_1280.jpg"} url={elememt.url} author={elememt.author??"Unknown"} source={elememt.source.name} date={elememt.publishedAt}/>
             </div>
             })}
         </div>
