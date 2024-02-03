@@ -7,7 +7,7 @@ const App =()=>{
   const [progress,setProgress]=useState(0);
     return (
       <>
-      <Router basename="/news-app">
+      <Router basename="">
       <Newsnavbar />
       <LoadingBar
         color='#f11946'
