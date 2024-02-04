@@ -7,7 +7,7 @@ const App =()=>{
   const [progress,setProgress]=useState(0);
     return (
       <>
-      <Router basename="">
+      <Router basename="/">
       <Newsnavbar />
       <LoadingBar
         color='#f11946'
@@ -16,7 +16,7 @@ const App =()=>{
       />
       <div className="container">
         <Routes>
-            <Route exact path="/news-app" element={<News setProgress={setProgress} key="normal" pageSize={6} category="general"/>} />
+            <Route exact path="/" element={<News setProgress={setProgress} key="normal" pageSize={6} category="general"/>} />
             <Route exact path="/business" element={<News setProgress={setProgress} key="business" pageSize={6} category="business"/>}/>
             <Route exact path="/entertainment" element={<News setProgress={setProgress} key="entertainment" pageSize={6} category="entertainment"/>}/>
             <Route exact path="/general" element={<News setProgress={setProgress} key="general" pageSize={6} category="general"/>}/>
