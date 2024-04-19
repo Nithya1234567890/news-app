@@ -1,6 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 const Newsnavbar=()=>{
+  const loc=useLocation();
+  useEffect(()=>{
+    console.log(loc.pathname)
+  },[loc]);
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -11,13 +15,13 @@ const Newsnavbar=()=>{
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item"><Link className="nav-link active" to="/business">business</Link></li>
-          <li className="nav-item"><Link className="nav-link active" to="/entertainment">entertainment</Link></li>
-          <li className="nav-item"><Link className="nav-link active" to="/general">general</Link></li>
-          <li className="nav-item"><Link className="nav-link active" to="/health">health</Link></li>
-          <li className="nav-item"><Link className="nav-link active" to="/science">science</Link></li>
-          <li className="nav-item"><Link className="nav-link active" to="/sports">sports</Link></li>
-          <li className="nav-item"><Link className="nav-link active" to="/technology">technology</Link></li>
+          <li className="nav-item"><Link className={`nav-link ${(loc.pathname==='/general' || loc.pathname==='/')?"text-white":""}`} to="">General</Link></li>
+          <li className="nav-item"><Link className={`nav-link ${loc.pathname==='/business'?"text-white":""}`} to="/business">Business</Link></li>
+          <li className="nav-item"><Link className={`nav-link ${loc.pathname==='/entertainment'?"text-white":""}`} to="/entertainment">Entertainment</Link></li>
+          <li className="nav-item"><Link className={`nav-link ${loc.pathname==='/health'?"text-white":""}`} to="/health">Health</Link></li>
+          <li className="nav-item"><Link className={`nav-link ${loc.pathname==='/science'?"text-white":""}`} to="/science">Science</Link></li>
+          <li className="nav-item"><Link className={`nav-link ${loc.pathname==='/sports'?"text-white":""}`} to="/sports">Sports</Link></li>
+          <li className="nav-item"><Link className={`nav-link ${loc.pathname==='/technology'?"text-white":""}`} to="/technology">Technology</Link></li>
       </ul>
     </div>
   </div>
